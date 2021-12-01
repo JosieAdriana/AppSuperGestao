@@ -20,16 +20,30 @@ Route::get("/", function () {
   return view('partials.navbar');
 });
 
-Route::get('/principal',[PrincipalController::class , 'principal']);
-Route::get('/sobre-nos',[SobreNosController::class , 'SobreNos']);
-Route::get('/contato', [ContatoController::class , 'contato']);
+Route::get('/principal',[PrincipalController::class , 'principal'])->name('site.index');
+Route::get('/sobre-nos',[SobreNosController::class , 'SobreNos'])-> name('site.sobrenos');
+Route::get('/contato', [ContatoController::class , 'contato'])-> name('site.contato') ;
+Route::get('/login', function() { return 'Login';})->name('site.login');
 
-Route::get('/login', function() { return 'Login';});
-Route::get('/clientes', function(){ return 'Clientes';});
-Route::get('/fornecedores', function(){return 'Fornecedores';}); 
-Route::get('/produtos', function(){return 'Produtos';});
+ Route::prefix('/app')-> group(function(){
+
+  Route::get('/clientes', function(){ return 'Clientes';})->name('app.clientes');
+  Route::get('/fornecedores', function(){return 'Fornecedores';})->name('app.fornecedores'); 
+  Route::get('/produtos', function(){return 'Produtos';})->name('app.produtos');
+  
+});
+
+Route::get('/rota1', function() {
+echo 'rota1';
+})-> name('site.rota1');
 
 
+Route::get('/rota2', function() {
+return redirect()->route('site.rota1');
+})-> name('site.rota2');
+
+
+//Route::redirect('/rota2','/rota1');
 
 
 
