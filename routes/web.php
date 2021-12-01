@@ -23,6 +23,13 @@ Route::get("/", function() {
 Route::get('/principal', [PrincipalController::class , 'principal']);
 Route::get('/sobre-nos', [SobreNosController::class , 'SobreNos']);
 Route::get('/contato', [ContatoController::class , 'contato']);
+//nome, categoria, assunto, mensagem
+
+
+Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem}', function(string $nome, string $categoria, string $assunto, string $mensagem) {
+  echo "Estamos aqui:$nome - $categoria - $assunto - $mensagem";
+});
+
 
 // VERBOS HTTP
 
