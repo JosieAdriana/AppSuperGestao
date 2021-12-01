@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
+use PhpParser\Node\Scalar\MagicConst\Function_;
 
 /*
  |------------------------- | Web Routes |--------------------------- |
@@ -42,6 +43,10 @@ Route::get('/rota2', function() {
 return redirect()->route('site.rota1');
 })-> name('site.rota2');
 
+
+Route::fallback(Function(){
+  echo 'A rota acessada não existe, <a href= "'.route('site.index').'"> clique aqui</a>  para ir para a página inicial.';
+});
 
 //Route::redirect('/rota2','/rota1');
 
