@@ -7,7 +7,7 @@ use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
 
 /*
-  |------------------------- | Web Routes |--------------------------- |
+ |------------------------- | Web Routes |--------------------------- |
  Here is where you can register web routes for your application. These | 
  routes are loaded by the RouteServiceProvider within a group which | contains the "web" middleware group.
  Now create something great! | */
@@ -16,19 +16,21 @@ use App\Http\Controllers\ContatoController;
 //     return view('welcome');
 // });
 
-Route::get("/", function() {
-    return view('partials.navbar');
+Route::get("/", function () {
+  return view('partials.navbar');
 });
 
-Route::get('/principal', [PrincipalController::class , 'principal']);
-Route::get('/sobre-nos', [SobreNosController::class , 'SobreNos']);
+Route::get('/principal',[PrincipalController::class , 'principal']);
+Route::get('/sobre-nos',[SobreNosController::class , 'SobreNos']);
 Route::get('/contato', [ContatoController::class , 'contato']);
-//nome, categoria, assunto, mensagem
+
+Route::get('/login', function() { return 'Login';});
+Route::get('/clientes', function(){ return 'Clientes';});
+Route::get('/fornecedores', function(){return 'Fornecedores';}); 
+Route::get('/produtos', function(){return 'Produtos';});
 
 
-Route::get('/contato/{nome}/{categoria}/{assunto}/{mensagem}', function(string $nome, string $categoria, string $assunto, string $mensagem) {
-  echo "Estamos aqui:$nome - $categoria - $assunto - $mensagem";
-});
+
 
 
 // VERBOS HTTP
