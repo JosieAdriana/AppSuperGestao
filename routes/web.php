@@ -24,6 +24,7 @@ Route::get("/", function () {
 
 Route::get('/principal', [PrincipalController::class , 'principal'])->name('site.index');
 Route::get('/sobre-nos', [SobreNosController::class , 'SobreNos'])->name('site.sobrenos');
+// Route::get('/contato', [ContatoController::class , 'formularioContato'])->name('site.contato');
 Route::get('/contato', [ContatoController::class , 'contato'])->name('site.contato');
 Route::post('/contato', [ContatoController::class , 'contato'])->name('site.contato');
 Route::get('/login', function () {

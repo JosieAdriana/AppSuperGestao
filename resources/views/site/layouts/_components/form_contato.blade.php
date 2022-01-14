@@ -4,7 +4,7 @@
     @csrf
     <input name="nome" type="text" placeholder="Nome" class={{ $classe }}>
     <br>
-    <input name="telefone" type="text" placeholder="Telefone" class="{{ $classe }}>
+    <input name="telefone" type="text" placeholder="Telefone" class="{{ $classe }}">
     <br>
     <input name="email" type="text" placeholder="E-mail" class={{ $classe }}>
     <br>
@@ -19,3 +19,9 @@
     <br>
     <button type="submit" class={{ $classe }}>ENVIAR</button>
 </form>
+
+<div style="position:absolute; top:0px; left:0px; width:100%; background:red">
+    <pre>
+    {{ print_r($errors)}}
+    </pre> 
+</div>   
