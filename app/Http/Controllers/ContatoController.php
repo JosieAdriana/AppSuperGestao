@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\SiteContato;
+use Illuminate\Contracts\View\View;
 
 class ContatoController extends Controller
 {
-    public function formularioContato(Request $request)
+    public function formularioContato(Request $request): View
     {
         return view('site.contato', ['titulo' => 'Contato(teste)']);
     }
 
-    public function contato(Request $request)
+    public function contato(Request $request): View
     {
         /*
         echo '<pre>';
@@ -51,8 +52,8 @@ class ContatoController extends Controller
             'email' => 'required',
             'motivo_contato' => 'required',
             'mensagem' => 'required'
-            
         ]);
+
         // SiteContato::create($request->all());
     }
 }
