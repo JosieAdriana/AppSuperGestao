@@ -30,7 +30,7 @@ Route::get('/login', function () {
   return 'Login';
 })->name('site.login');
 
-Route::prefix('/app')->group(function () {
+Route::prefix('app')->group(function () {
   Route::get('/clientes', function () {
       return 'Clientes';
     }
@@ -38,7 +38,7 @@ Route::prefix('/app')->group(function () {
 
     /* PessoaController@telefones === [PessoaController::class, 'telefones'] */
 
-    Route::get('/fornecedores', [FornecedorController::class , 'index'])->name('app.fornecedores');
+    Route::get('fornecedores', [FornecedorController::class , 'index'])->name('app.fornecedores');
 
     Route::get('/produtos', function () {
       return 'Produtos';
