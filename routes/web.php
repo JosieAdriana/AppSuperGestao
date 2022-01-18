@@ -7,6 +7,8 @@ use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\FornecedorController;
+use App\Http\Middleware\LogAcessoMiddleware;
+
 
 /*
  |------------------------- | Web Routes |--------------------------- |
@@ -22,10 +24,17 @@ Route::get("/", function () {
   return view('welcome');
 });
 
-Route::get('/principal', [PrincipalController::class , 'principal'])->name('site.index');
+Route::middleware(LogAcessoMiddleware::class)
+->get('/principal', [PrincipalController::class , 'principal'])
+->name('site.index');
+
 Route::get('/sobre-nos', [SobreNosController::class , 'SobreNos'])->name('site.sobrenos');
 // Route::get('/contato', [ContatoController::class , 'formularioContato'])->name('site.contato');
-Route::get('/contato', [ContatoController::class , 'contato'])->name('site.contato');
+
+Route::middleware(LogAcessoMiddleware::class)
+->get('/contato', [ContatoController::class , 'contato'])
+->name('site.contato');
+
 Route::post('/contato', [ContatoController::class , 'salvar'])->name('site.contato');
 Route::get('/login', function () {
   return 'Login';
