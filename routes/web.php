@@ -24,7 +24,7 @@ Route::get("/", function () {
   return view('welcome');
 });
 
-Route::get('/principal', [PrincipalController::class , 'principal'])->name('site.index');
+Route::get('/principal', [PrincipalController::class , 'principal'])->name('site.index')->middleware('log.acesso');
 
 Route::get('/sobre-nos', [SobreNosController::class , 'SobreNos'])->name('site.sobrenos');
 // Route::get('/contato', [ContatoController::class , 'formularioContato'])->name('site.contato');
