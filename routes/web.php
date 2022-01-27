@@ -2,13 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\FornecedorController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\TesteController;
-use App\Http\Controllers\FornecedorController;
-
-
 
 /*
  |------------------------- | Web Routes |--------------------------- |
@@ -32,9 +31,9 @@ Route::get('/sobre-nos', [SobreNosController::class, 'SobreNos'])->name('site.so
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
 
 Route::post('/contato', [ContatoController::class, 'salvar'])->name('site.contato');
-Route::get('/login', function () {
-  return 'Login';
-})->name('site.login');
+
+Route::get('/login',[LoginController::class, 'index'])->name('site.login');
+Route::post('/login',[LoginController::class, 'autenticar'])->name('site.login');
 
 Route::middleware('autenticacao:padrao, visitante')->prefix('app')->group(function () {
   Route::get('/clientes', function () {
