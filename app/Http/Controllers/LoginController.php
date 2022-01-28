@@ -7,27 +7,27 @@ use App\Models\User;
 
 class LoginController extends Controller
 {
-    public function index(Request $request) {
-    
-        $erro = '' ;
+    public function index(Request $request)
+    {
 
-       if($request->get('erro') ==1){
-           $erro = 'Usuário e ou senha não existe';
-       };
-        
-       if($request->get('erro') ==2){
-        $erro = 'Necessário efetuar login para ter acesso a página';
-    };
-       
-        return view('site.login', ['titulo' => 'Login', 'erro'=> $erro]);
+        $erro = '';
+
+        if ($request->get('erro') == 1) {
+            $erro = 'Usuário e ou senha não existe';
+        };
+
+        if ($request->get('erro') == 2) {
+            $erro = 'Necessário efetuar login para ter acesso a página';
+        };
+
+        return view('site.login', ['titulo' => 'Login', 'erro' => $erro]);
     }
 
     public function autenticar(Request $request)
     {
-
         //regras de validação
         $regras = [
-            'usuario' => 'email',
+            'usuario' => 'email|required',
             'senha' => 'required'
         ];
 
@@ -43,26 +43,24 @@ class LoginController extends Controller
         $email = $request->get('usuario');
         $password = $request->get('senha');
 
-       
-
-        //iniciar o Model User
-        $user = new User();
-
-        $usuario = $user->where('email', $email)
+        $usuario = User::where('email', $email)
             ->where('password', $password)
             ->get()->first();
 
-        if(isset($usuario->name)){
-          
+        if (isset($usuario->name)) {
+
             session_start();
             $_SESSION['nome'] = $usuario->name;
             $_SESSION['email'] = $usuario->email;
-            
-            return redirect()->route('app.clientes');
 
+            return redirect()->route('app.home');
         } else {
-            return redirect()->route('site.login', ['erro'=> 1]);
+            return redirect()->route('site.login', ['erro' => 1]);
         }
-       
+    }
+
+    public function sair()
+    {
+        echo 'Sair';
     }
 }
