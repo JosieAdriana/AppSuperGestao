@@ -15,7 +15,7 @@ class FornecedorSeeder extends Seeder
      */
     public function run()
     {
-        //instanciando o objeto
+        // instanciando o objeto
         $fornecedor = new Fornecedor();
         $fornecedor->nome = 'Fornecedor 100';
         $fornecedor->site = 'fornecedor100.com.br';
@@ -32,14 +32,15 @@ class FornecedorSeeder extends Seeder
 
         ]);
 
-        //insert
+        // insert
         DB::table('fornecedores')->insert([
             'nome' => 'Fornecedor 300',
             'site' => 'fornecedor300.com.br',
             'uf' => 'PR',
             'email' => 'contato@fornecedor300.com.br'
-
-
         ]);
+
+        // quarta forma
+        Fornecedor::factory()->count(100)->create();
     }
 }

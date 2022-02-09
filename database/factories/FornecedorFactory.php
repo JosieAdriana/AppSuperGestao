@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SiteContatoFactory extends Factory
+class FornecedorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -15,10 +15,9 @@ class SiteContatoFactory extends Factory
     {
         return [
             'nome' => $this->faker->name,
-            'telefone' => $this->faker->cellphoneNumber,
-            'email' => $this->faker->unique()->email,
-            'motivo_contatos_id' => $this->faker->numberBetween(1, 3),
-            'mensagem' => $this->faker->text(200)
+            'site' => sprintf('%s.com.br', $this->faker->name),
+            'uf' => $this->faker->stateAbbr,
+            'email' => $this->faker->email
         ];
     }
 }
