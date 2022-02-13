@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Produto;
 use App\Models\Unidade;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -69,9 +70,9 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show($produto)
+    public function show(Produto $produto): View
     {
-        //
+        return view('app.produto.show', ['produto' => $produto]);
     }
 
     /**
