@@ -81,9 +81,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\Produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function edit($produto)
-    {
-        //
+    public function edit(Produto $produto)
+    {   
+        $unidades = Unidade::all();
+        return view( 'app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
     }
 
     /**
