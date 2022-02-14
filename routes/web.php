@@ -10,6 +10,7 @@ use App\Http\Controllers\SobreNosController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\ProdutoDetalheController;
 
 /*
  |------------------------- | Web Routes |--------------------------- |
@@ -42,9 +43,10 @@ Route::middleware('autenticacao:padrao, visitante')->prefix('app')->group(functi
     Route::get('/fornecedor/editar/{id}/{smg?}', [FornecedorController::class, 'editar'])->name('app.fornecedor.editar');
     Route::get('/fornecedor/excluir/{id}/{smg?}', [FornecedorController::class, 'excluir'])->name('app.fornecedor.excluir');
     //produtos
-    Route::resource('produto', ProdutoController::class);
+    Route::resource('produto', ProdutoController::class);});
    
-});
+    //produtos detalhes
+    Route::resource('produto-detalhe',  ProdutoDetalheController::class);
 
   Route::get('/teste/{p1}/{p2}', [TesteController::class, 'teste'])->name('teste');
   Route::fallback(function () {
