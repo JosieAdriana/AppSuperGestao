@@ -27,6 +27,11 @@
                             <th>Descrição</th>
                             <th>Peso</th>
                             <th>Unidade ID</th>
+                            <th>Comprimento</th>
+                            <th>Altura</th>
+                            <th>Largura</th>
+
+
                             <th></th>
                             <th></th>
                             <th></th>
@@ -40,15 +45,19 @@
                                 <td>{{ $produto->descricao }}</td>
                                 <td>{{ $produto->peso }}</td>
                                 <td>{{ $produto->unidade_id }}</td>
-
-                                <td> <a href="{{ route('produto.show', ['produto' => $produto->id]) }}"> Visualizar</a></td>
+                                <td>{{ $produto->comprimento ?? "" }}</td>
+                                <td>{{ $produto->altura ?? "" }}</td>
+                                <td>{{ $produto->largura ?? "" }}</td>
+                                <td> <a href="{{ route('produto.show', ['produto' => $produto->id]) }}"> Visualizar</a>
+                                </td>
                                 <td>
-                                    <form id="form_{{$produto->id}}" method='post'
+                                    <form id="form_{{ $produto->id }}" method='post'
                                         action="{{ route('produto.destroy', ['produto' => $produto->id]) }}">
                                         @method('DELETE')
                                         @csrf
                                         <!--<button type="submit">Excluir</button>-->
-                                        <a href="#" onclick="document.getElementById('form_{{$produto->id}}').submit()"> Excluir</a>
+                                        <a href="#" onclick="document.getElementById('form_{{ $produto->id }}').submit()">
+                                            Excluir</a>
                                     </form>
                                 </td>
                                 <td>
@@ -63,15 +72,15 @@
 
                 {{ $produtos->appends($request)->links() }}
                 <!--
-                    <br>
-                    {{ $produtos->count() }} - Total de registros por páginas
-                    <br>
-                    {{ $produtos->total() }} - Total de registros da consulta
-                    <br>
-                    {{ $produtos->firstItem() }} - Número do primeiro registro da página
-                    <br>
-                    {{ $produtos->lastItem() }} - Número do último registro da página
-                    -->
+                        <br>
+                        {{ $produtos->count() }} - Total de registros por páginas
+                        <br>
+                        {{ $produtos->total() }} - Total de registros da consulta
+                        <br>
+                        {{ $produtos->firstItem() }} - Número do primeiro registro da página
+                        <br>
+                        {{ $produtos->lastItem() }} - Número do último registro da página
+                        -->
                 <br>
                 Exibindo {{ $produtos->count() }} produtos de {{ $produtos->total() }} (de
                 {{ $produtos->firstItem() }} a {{ $produtos->lastItem() }})
