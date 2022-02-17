@@ -69,7 +69,7 @@
                     </tbody>
                 </table>
 
-
+               
                 {{ $produtos->appends($request)->links() }}
                 <!--
                         <br>
