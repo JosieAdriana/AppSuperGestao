@@ -41,6 +41,6 @@ class FornecedorSeeder extends Seeder
         ]);
 
         // quarta forma
-        Fornecedor::factory()->count(100)->create();
+        Fornecedor::factory()->count(10)->create();
     }
 }
