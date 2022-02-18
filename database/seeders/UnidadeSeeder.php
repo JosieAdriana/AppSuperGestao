@@ -16,7 +16,7 @@ class UnidadeSeeder extends Seeder
     public function run()
     {
         Unidade::create([
-            'sigla' => 'UN',
+            'unidade' => 'UN',
             'descricao' => 'Unidade'
         ]);
     }
