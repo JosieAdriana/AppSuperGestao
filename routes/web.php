@@ -13,6 +13,9 @@ use App\Http\Controllers\TesteController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\ProdutoDetalheController;
 
+use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\PedidoProdutoController;
+
 /*
  |------------------------- | Web Routes |--------------------------- |
  Here is where you can register web routes for your application. These | 
@@ -51,9 +54,9 @@ Route::middleware('autenticacao:padrao, visitante')->prefix('app')->group(functi
   //produtos detalhes
   Route::resource('produto-detalhe',  ProdutoDetalheController::class);
 
-  Route::resource('cliente', 'ClienteController');
-  Route::resource('pedido', 'PedidoController');
-  Route::resource('pedido_produto', 'PedidoProdutoController');
+  Route::resource('cliente', ClienteController::class);
+  Route::resource('pedido', PedidoController::class);
+  Route::resource('pedido_produto', PedidoProdutoController::class);
 });
 
 
